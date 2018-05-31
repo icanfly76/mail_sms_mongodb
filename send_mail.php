@@ -21,6 +21,14 @@ if(get_cfg_var('Host_Type'))
 */
 
 $connection = new MongoClient($mongo_host,$conf['mongodb']);
+#$connection = new MongoClient("mongodb://10.66.248.127:27017/admin",
+#    array(
+#        "username" => "rwuser",
+#        "password" => "masonmou0987",
+#        "authMechanism" => "MONGODB-CR"
+#    )
+#);
+
 $mongo_db = $connection->mail_db;
 $mongo_collection = $mongo_db->mail_record;
 

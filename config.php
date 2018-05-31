@@ -5,23 +5,15 @@ $mongo_host='';
 $conf = array(
     'redis' => array(
         'host' => '',
-        'port' =>  '',
+        'port' =>  '6379',
         'pass' => ''
     ),
     #mongodb MONGODB-CR验证方式
-    /* 
     'mongodb' => array(
         'username' =>  'rwuser',
         'password' => '',
         'authMechanism' => 'MONGODB-CR'
     ),
-    */
-    #mongodb SCRAM-SHA-1认证方式
-    'mongodb' => array(
-        'username' =>  'mongouser',
-        'password' => ''
-    ),
-    
 
     'access_key' => array(
         ''
