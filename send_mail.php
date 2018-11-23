@@ -16,14 +16,6 @@ if(get_cfg_var('Host_Type'))
 	require_once dirname(__FILE__) . '/config.php';
 }
 
-/*
-向mongodb写入数据
-*/
-
-$connection = new MongoClient($mongo_host,$conf['mongodb']);
-
-$mongo_db = $connection->mail_db;
-$mongo_collection = $mongo_db->mail_record;
 
 set_time_limit(0);
 date_default_timezone_set('Asia/Shanghai');
@@ -64,7 +56,12 @@ for($i = 0; $i < $len; $i++)
 		'subject'=>$subject,
 		'content'=>$content
 	);
-	$mongo_collection->save($send_result);
+
+        //使用mongodb驱动处理数据
+        $manager = new MongoDB\Driver\Manager($mongo_uri);
+        $bulk = new MongoDB\Driver\BulkWrite;
+        $_id1 = $bulk->insert($send_result);
+        $result = $manager->executeBulkWrite('email.sendlist', $bulk);
 	$redis->lPop($email_key);
 	sleep(2);
 }

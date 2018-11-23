@@ -1,18 +1,12 @@
 <?php
-#定义mongodb host地址
-$mongo_host='';
+#mongodb 驱动可以用 “MONGODB-CR” 和 “SCRAM-SHA-1” 两种认证方式
+$mongo_uri = '';
 
 $conf = array(
     'redis' => array(
         'host' => '',
-        'port' =>  '6379',
+        'port' =>  '',
         'pass' => ''
-    ),
-    #mongodb MONGODB-CR验证方式
-    'mongodb' => array(
-        'username' =>  'rwuser',
-        'password' => '',
-        'authMechanism' => 'MONGODB-CR'
     ),
 
     'access_key' => array(
@@ -20,11 +14,11 @@ $conf = array(
     ),
     'allow_access_ip' => array(
         '127.0.0.1',
-	'10.154.40.65',
+	'',
 
     ),
     'mail' => array(
-        'host' => 'smtp.qq.com',
+     'host' => 'smtp.qq.com',
         'port' => 25,
         'username' => '',
         'password' => '',
